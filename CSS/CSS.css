@@ -7,6 +7,8 @@
     font-family: 'Inter', sans-serif;
 }
 
+/* Configura el fondo de la página mediante múltiples gradientes lineales que crean un patrón 
+   geométrico repetitivo, asegurando que cubra todo el alto del visor (viewport). */
 html {
     background-color: var(--fondo);
     background-image:
@@ -53,9 +55,6 @@ body {
     width: 100%;
     max-width: 1000px;
 }
-
-/* Define el contenedor principal tipo "tarjeta" de tu currículum, 
-   estableciendo un ancho máximo, sombra, bordes redondeados y una disposición en fila (horizontal). */
 
 /* Da estilo a la columna izquierda (perfil), ocupando el 35% del ancho, 
    centrando su contenido y aplicando color de fondo y bordes redondeados solo a la izquierda. */
@@ -536,6 +535,8 @@ footer {
    el ancho de la pantalla sea de 768 píxeles o inferior (teléfonos y tablets pequeñas). */
 @media (max-width: 768px) {
 
+    /* Cambia la disposición del cuerpo a una columna vertical para pantallas estrechas, 
+       centrando el contenido y ajustando el espaciado interno. */
     body {
         flex-direction: column;
         align-items: center; 
