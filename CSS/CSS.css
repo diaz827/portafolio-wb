@@ -1,0 +1,589 @@
+/* Resetea los márgenes, rellenos y el modelo de caja para todos los elementos, 
+   y establece la tipografía base de la página web. */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Define variables de color globales (Custom Properties) para mantener 
+   la consistencia visual y facilitar los cambios de paleta en el futuro. */
+:root {
+    --secciones: rgb(130, 130, 130);
+    --enlace: rgb(245, 248, 255);
+    --fondo: rgb(212, 212, 212);
+    --links: rgb(28, 28, 28);
+    --fondoimagen: rgb(130, 130, 130);
+    --nivel: rgb(242, 240, 239);
+    --nivelAdquirido: rgb(8, 132, 8);
+    --main: rgb(242, 240, 239);
+    --fondito: rgb(245, 248, 255);
+    --h2: rgb(67, 70, 86);
+    --esquinado: rgb(212, 212, 212);
+}
+
+/* Estiliza el cuerpo del documento, centrando su contenido con flexbox, 
+   aplicando un padding general y el color de fondo establecido en las variables. */
+body {
+    padding: 32px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   background-color: var(--fondo);
+    background-image:  
+      linear-gradient(30deg, var(--main) 12%, transparent 12.5%, transparent 87%, var(--main) 87.5%, var(--main)),
+      linear-gradient(150deg, var(--main) 12%, transparent 12.5%, transparent 87%, var(--main) 87.5%, var(--main)),
+      linear-gradient(30deg, var(--main) 12%, transparent 12.5%, transparent 87%, var(--main) 87.5%, var(--main)),
+      linear-gradient(150deg, var(--main) 12%, transparent 12.5%, transparent 87%, var(--main) 87.5%, var(--main)),
+      linear-gradient(60deg, var(--fondito) 25%, transparent 25.5%, transparent 75%, var(--fondito) 75%, var(--fondito)),
+      linear-gradient(60deg, var(--fondito) 25%, transparent 25.5%, transparent 75%, var(--fondito) 75%, var(--fondito));
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    background-attachment: fixed;
+}
+
+/* Define el contenedor principal tipo "tarjeta" de tu currículum, 
+   estableciendo un ancho máximo, sombra, bordes redondeados y una disposición en fila (horizontal). */
+.divMain {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1000px;
+  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+}
+
+/* Da estilo a la columna izquierda (perfil), ocupando el 35% del ancho, 
+   centrando su contenido y aplicando color de fondo y bordes redondeados solo a la izquierda. */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--fondoimagen);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding: 32px;
+    width: 35%;
+}
+
+/* Asegura que todos los textos (párrafos) dentro del header sean de color blanco 
+   y elimina el margen inferior por defecto. */
+header p {
+    color: white;
+    margin-bottom: 0;
+}
+
+/* Da estilo a la columna derecha (contenido principal), ocupando el 65% del ancho, 
+   con un color de fondo claro y bordes redondeados solo a la derecha. */
+main {
+    width: 65%;
+    padding: 32px;
+    background-color: var(--fondito);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* Estilo del título principal (tu nombre), en color blanco y con un pequeño margen inferior. */
+h1 {
+    color: white;
+    margin-bottom: 0;
+    margin-bottom: 10px;
+}
+
+/* Clase de utilidad para añadir un margen uniforme en todos los lados del elemento. */
+.espacio {
+    margin: 5px;
+}
+
+/* Estiliza los títulos de las secciones (Perfil, Formación, etc.), usando letras mayúsculas, 
+   un peso de fuente seminegrita y un borde decorativo a la izquierda. */
+h2 {
+    color: var(--h2);
+    font-weight: 600;
+    margin-top: 32px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 19px;
+    border-left: 4px solid var(--h2);
+    padding-left: 8px;
+    margin-bottom: 16px;
+}
+
+/* Elimina el margen superior del primer h2 (PERFIL) para que quede bien alineado 
+   con la parte superior del contenedor principal. */
+section:first-child h2 {
+    margin-top: 0;
+}
+
+/* Estilo base para los textos descriptivos: color gris oscuro, interlineado amplio 
+   para facilitar la lectura y un pequeño margen inferior. */
+p {
+    color: #555;
+    line-height: 1.6;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+/* Centra el bloque que contiene la foto, tu nombre y los subtítulos dentro del header. */
+#cuerpoFlotante {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+/* Da formato a tu foto de perfil: tamaño fijo, forma completamente circular (50% radius) 
+   y un borde grueso que coincide con el color de fondo principal. */
+header img {
+    width: 200px;
+    max-width: 100%;
+    border-radius: 50%;
+    margin-bottom: 16px;
+    border-radius: 50%;
+    border: 6px solid var(--fondito);
+}
+
+/* Oculta inicialmente las imágenes dentro de las tarjetas (prácticas/ejercicios)
+   y prepara las propiedades para hacer una transición suave al aparecer. */
+.secciones img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+}
+
+/* Efecto hover: Al pasar el ratón sobre la tarjeta, la imagen se expande, 
+   se hace visible (opacidad 1) y añade un margen superior animado. */
+.secciones:hover img {
+    max-height: 300px;
+    opacity: 1;
+    margin-top: 16px;
+}
+
+/* Asegura que el contenedor de navegación del menú lateral ocupe todo el ancho de su padre. */
+nav {
+    width: 100%;
+}
+
+/* Transforma las listas en una columna flexbox, quitando viñetas y separando los elementos. */
+ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    list-style: none;
+    gap: 8px
+}
+
+/* Estilo base para los enlaces: quita el subrayado, hereda color y centra 
+   cualquier contenido que se ponga dentro de ellos. */
+a {
+    color: var(--links);
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Da apariencia de botón a los enlaces del menú lateral, definiendo altura, 
+   color de fondo, bordes redondeados y preparando el efecto de transición. */
+.enlace {
+    border: 1px solid var(--links);
+    background-color: var(--enlace);
+    border-radius: 10px;
+    height: 40px;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+/* Cambia el color de fondo del botón de enlace a un gris claro cuando el usuario pasa el cursor. */
+.enlace:hover {
+    background-color: #ddd;
+}
+
+/* Contenedor flexbox para crear rejillas (grids/columnas) responsivas. 
+   Permite que los elementos hijos se distribuyan y salten a la siguiente línea si no hay espacio. */
+.columnas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 1vw;
+    justify-content: center;
+}
+
+/* Estiliza los cajones de conocimientos técnicos, estableciendo sus dimensiones, 
+   color, bordes, flexbox para centrar su contenido, y una transición para el hover. */
+.cajonProgreso {
+    flex: 1 1 150px;
+    padding: 20px;
+    border: 1px solid var(--links);
+    background-color: var(--secciones);
+    text-align: left;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    position: relative;
+    margin: 1%;
+    min-width: 140px;
+    max-width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Eleva ligeramente el cajón de progreso hacia arriba cuando se pasa el cursor por encima. */
+.cajonProgreso:hover {
+    transform: translateY(-5px);
+}
+
+/* Asegura que cualquier texto dentro de los cajones de progreso sea de color blanco. */
+.cajonProgreso p {
+    color: white;
+    margin-bottom: 0;
+}
+
+/* Define la apariencia de las tarjetas individuales de experiencia, educación o proyectos. 
+   Incluye sombreado, color de fondo, transición y flexbox para su distribución espacial. */
+.secciones {
+    flex: 1;
+    padding: 16px;
+    border: 1px solid var(--links);
+    background-color: var(--secciones);
+    text-align: left;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 45%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Pseudoelemento para crear un detalle decorativo (como una esquina doblada o sombreada) 
+   en la parte inferior derecha de la tarjeta. Nota: Esta regla parece estar duplicada y sobrescrita por la siguiente. */
+.secciones::before {
+    content: "";
+    background-color: var(--esquinado);
+    opacity: 65%;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 2.5vw;
+    height: 2.5vw;
+    border-radius: 3vw 0px 10px 0px;
+}
+
+/* Sobrescribe/ajusta los bordes redondeados del pseudoelemento decorativo creado en la regla anterior. */
+.secciones::before {
+    content: "";
+    background-color: var(--esquinado);
+    opacity: 65%;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 2.5vw;
+    height: 2.5vw;
+    border-radius: 3vw 0 0.8vw 0;
+}
+
+/* Efecto hover interactivo: Al pasar el cursor, la tarjeta se eleva (Y), 
+   aumenta de tamaño (escala) y proyecta una sombra más pronunciada. */
+.secciones:hover {
+    transform: translateY(-0.5rem) scale(1.10);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Forza a que el texto de los párrafos dentro de estas tarjetas oscuras sea blanco. */
+.secciones p {
+    color: white;
+    margin-bottom: 0;
+}
+
+/* Oculta los enlaces que recubren las tarjetas de proyectos mediante `pointer-events: none`, 
+   colocándolos absolutos sobre toda la tarjeta. */
+.secciones a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Activa los eventos de clic del enlace superpuesto únicamente cuando 
+   se hace hover sobre la tarjeta completa. */
+.secciones:hover a {
+    pointer-events: auto;
+}
+
+/* Contenedores base para cada gran bloque de contenido (Perfil, Experiencia...). 
+   Tienen fondo claro y bordes redondeados separándolos entre sí. */
+section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    background-color: var(--fondito);
+    padding: 18px;
+    border-radius: 15px;
+    max-width: 1000px;
+    width: 100%;
+}
+
+/* Círculo base (contenedor exterior) para las gráficas de anillo de conocimientos técnicos. */
+.circle_progress {
+    width: 110px;
+    height: 110px;
+    max-width: 15vw;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin: 5% auto;
+    box-shadow: 0 0.4vw 1vw rgba(0, 0, 0, 0.2);
+}
+
+/* Círculo interior de las gráficas de anillo. Contiene el texto centrado y bloquea el fondo 
+   para crear visualmente el agujero del "donut". */
+.circle_progress span {
+    width: 88px;
+    height: 88px;
+    aspect-ratio: 1 / 1;
+    background-color: var(--secciones);
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+}
+
+/* Gráfica de anillo: Pinta el 90% del círculo exterior de verde (nivelAdquirido) indicando "Alto". */
+.nivel-alto {
+    background: conic-gradient(var(--nivelAdquirido) 0% 90%,
+            var(--nivel) 90% 100%);
+}
+
+/* Gráfica de anillo: Pinta el 50% del círculo exterior indicando "Medio". */
+.nivel-medio {
+    background: conic-gradient(var(--nivelAdquirido) 0% 50%,
+            var(--nivel) 50% 100%);
+}
+
+/* Gráfica de anillo: Pinta el 25% del círculo exterior indicando "Bajo". */
+.nivel-baixo {
+    background: conic-gradient(var(--nivelAdquirido) 0% 25%,
+            var(--nivel) 25% 100%);
+}
+
+/* Oculta por defecto la barra de progreso lineal en pantallas grandes (se usará en móviles). */
+.barra_progress {
+    display: none;
+    width: 100%;
+    text-align: center;
+}
+
+/* Da estilo al texto encima de la barra de progreso lineal (color, tamaño y peso). */
+.barra_progress p {
+    color: white;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Define el contenedor exterior de la barra de progreso lineal, estableciendo su altura, fondo y bordes. */
+.nivel {
+    background-color: var(--nivel);
+    margin: 0;
+    height: 12px;
+    border: 1px solid var(--links);
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+}
+
+/* Define el elemento de llenado interno de la barra de progreso, usando el color de nivel adquirido. */
+.nivel div {
+    background-color: var(--nivelAdquirido);
+    height: 100%;
+}
+
+/* Establece el ancho de llenado al 90% para representar un nivel alto en la barra lineal. */
+.nivelAlto {
+    width: 90%;
+}
+
+/* Establece el ancho de llenado al 50% para representar un nivel medio en la barra lineal. */
+.nivelMedio {
+    width: 50%;
+}
+
+/* Contenedor flexbox para las etiquetas de Habilidades. Permite que fluyan 
+   y se envuelvan a la siguiente línea si no caben. */
+.pepelu {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+/* Estilo individual para cada "píldora" (etiqueta) de Habilidad, 
+   con fondo oscuro, bordes totalmente redondeados y autoajuste al contenido. */
+.joselu {
+    background-color: var(--fondoimagen);
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    text-align: center;
+    flex: 1 1 auto;
+}
+
+/* Asegura que el texto dentro de las "píldoras" de habilidades sea blanco. */
+.joselu p {
+    color: white;
+    margin-bottom: 0;
+}
+
+/* Contenedor principal del pie de página, igualando el ancho máximo (1000px) 
+   del currículum para que todo quede alineado. */
+.divFooter {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+}
+
+/* Estilos de la caja del pie de página: color de fondo, espaciado interior, 
+   separación superior, esquinas redondeadas y una pequeña sombra. */
+footer {
+    width: 100%;
+    background-color: var(--fondoimagen);
+    padding: 24px 32px;
+    margin-top: 24px;
+    border-radius: 15px;
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+/* Evita que el contenedor de navegación del pie de página ocupe el 100% 
+   del ancho, permitiéndole convivir en la misma línea con el copyright. */
+.footer-content nav {
+    width: auto;
+}
+
+/* Distribuye los elementos del pie de página (copyright a la izquierda, nav a la derecha) 
+   con flexbox y permite que se envuelvan si la pantalla se achica. */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* Pone de color blanco el texto de copyright del pie de página. */
+.footer-content p {
+    color: white;
+    margin-bottom: 0;
+}
+
+/* Cambia la orientación de los enlaces sociales en el pie de página de vertical a horizontal. */
+.footer-content nav ul {
+    flex-direction: row;
+    justify-content: center;
+    width: auto;
+}
+
+/* Adapta el aspecto de los botones-enlace para el pie de página: 
+   fondo transparente, borde blanco y autoajuste del ancho al contenido. */
+.footer-content .enlace {
+    width: auto;
+    padding: 0 16px;
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+/* Establece explícitamente el color blanco para los enlaces del pie de página. */
+.footer-content .enlace a {
+    color: white;
+}
+
+/* Efecto hover: Al pasar el cursor sobre los enlaces del footer, 
+   el fondo se oscurece ligeramente (con color blanco transparente). */
+.footer-content .enlace:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* MEDIA QUERY: Reglas CSS específicas que se aplicarán únicamente cuando 
+   el ancho de la pantalla sea de 768 píxeles o inferior (teléfonos y tablets pequeñas). */
+@media (max-width: 768px) {
+
+    /* Cambia la tarjeta principal de una vista lado-a-lado (horizontal) 
+       a una vista apilada (vertical), colocando el header arriba y el main abajo. */
+    .divMain {
+        flex-direction: column;
+    }
+
+    /* Hace que la cabecera (perfil) ocupe todo el ancho de la pantalla y ajusta 
+       los bordes redondeados para que solo se apliquen en la parte superior. */
+    header {
+        width: 100%;
+        border-radius: 15px 15px 0 0;
+    }
+
+    /* Hace que el contenido principal ocupe todo el ancho y ajusta 
+       los bordes redondeados para que solo se apliquen en la parte inferior. */
+    main {
+        width: 100%;
+        border-radius: 0 0 15px 15px;
+    }
+
+    /* Obliga a que los elementos en formato de tarjetas o columnas se apilen 
+       verticalmente, uno debajo del otro, por falta de espacio. */
+    .columnas {
+        flex-direction: column;
+    }
+
+    /* Apila el texto del copyright y los botones sociales del pie de página 
+       en vertical y los centra. */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Permite que los botones del menú en el footer salten de línea 
+       si no caben todos horizontalmente en pantallas muy estrechas. */
+    .footer-content nav ul {
+        flex-wrap: wrap;
+    }
+
+    /* Permite que los bloques de progreso ocupen el 100% del ancho del móvil, 
+       quitando el límite máximo que tenían en escritorio. */
+    .cajonProgreso {
+        flex-basis: 100%;
+        max-width: none;
+    }
+
+    /* Oculta las gráficas de anillo circulares en la versión móvil para ahorrar espacio. */
+    .circle_progress {
+        display: none;
+    }
+
+    /* Muestra las barras de progreso lineales como alternativa a los anillos en la versión móvil. */
+    .barra_progress {
+        display: block;
+    }
+
+    /* Reajusta el contenedor del progreso técnico en móviles, asegurando que ocupe
+       todo el ancho disponible y apile su contenido de forma vertical. */
+    .cajonProgreso {
+        flex-basis: 100%;
+        max-width: none;
+        flex-direction: column;
+    }
+}
