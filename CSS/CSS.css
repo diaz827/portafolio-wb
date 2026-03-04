@@ -7,6 +7,21 @@
     font-family: 'Inter', sans-serif;
 }
 
+html {
+    background-color: var(--fondo);
+    background-image:
+        linear-gradient(30deg, var(--main) 12%, transparent 12.5%, transparent 87%, var(--main) 87.5%, var(--main)),
+        linear-gradient(150deg, var(--main) 12%, transparent 12.5%, transparent 87%, var(--main) 87.5%, var(--main)),
+        linear-gradient(30deg, var(--main) 12%, transparent 12.5%, transparent 87%, var(--main) 87.5%, var(--main)),
+        linear-gradient(150deg, var(--main) 12%, transparent 12.5%, transparent 87%, var(--main) 87.5%, var(--main)),
+        linear-gradient(60deg, var(--fondito) 25%, transparent 25.5%, transparent 75%, var(--fondito) 75%, var(--fondito)),
+        linear-gradient(60deg, var(--fondito) 25%, transparent 25.5%, transparent 75%, var(--fondito) 75%, var(--fondito));
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    background-attachment: fixed;
+    min-height: 100vh; /* Asegura que el fondo cubra siempre toda la pantalla */
+}
+
 /* Define variables de color globales (Custom Properties) para mantener 
    la consistencia visual y facilitar los cambios de paleta en el futuro. */
 :root {
@@ -28,31 +43,19 @@
 body {
     padding: 32px 16px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-   background-color: var(--fondo);
-    background-image:  
-      linear-gradient(30deg, var(--main) 12%, transparent 12.5%, transparent 87%, var(--main) 87.5%, var(--main)),
-      linear-gradient(150deg, var(--main) 12%, transparent 12.5%, transparent 87%, var(--main) 87.5%, var(--main)),
-      linear-gradient(30deg, var(--main) 12%, transparent 12.5%, transparent 87%, var(--main) 87.5%, var(--main)),
-      linear-gradient(150deg, var(--main) 12%, transparent 12.5%, transparent 87%, var(--main) 87.5%, var(--main)),
-      linear-gradient(60deg, var(--fondito) 25%, transparent 25.5%, transparent 75%, var(--fondito) 75%, var(--fondito)),
-      linear-gradient(60deg, var(--fondito) 25%, transparent 25.5%, transparent 75%, var(--fondito) 75%, var(--fondito));
-    background-size: 80px 140px;
-    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
-    background-attachment: fixed;
+    align-items: stretch;
+    flex-wrap: wrap;
+    min-height: 94vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: auto;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1000px;
 }
 
 /* Define el contenedor principal tipo "tarjeta" de tu currículum, 
    estableciendo un ancho máximo, sombra, bordes redondeados y una disposición en fila (horizontal). */
-.divMain {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    max-width: 1000px;
-  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.4);
-    border-radius: 15px;
-}
 
 /* Da estilo a la columna izquierda (perfil), ocupando el 35% del ancho, 
    centrando su contenido y aplicando color de fondo y bordes redondeados solo a la izquierda. */
@@ -65,6 +68,9 @@ header {
     border-bottom-left-radius: 15px;
     padding: 32px;
     width: 35%;
+    flex: 0 0 30%;
+    box-shadow: -12px 12px 25px rgba(0, 0, 0, 0.5);
+
 }
 
 /* Asegura que todos los textos (párrafos) dentro del header sean de color blanco 
@@ -82,6 +88,9 @@ main {
     background-color: var(--fondito);
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
+    flex: 0 0 70%;
+   box-shadow: 12px 12px 25px rgba(0, 0, 0, 0.5);
+
 }
 
 /* Estilo del título principal (tu nombre), en color blanco y con un pequeño margen inferior. */
@@ -140,6 +149,7 @@ header img {
     margin-bottom: 16px;
     border-radius: 50%;
     border: 6px solid var(--fondito);
+
 }
 
 /* Oculta inicialmente las imágenes dentro de las tarjetas (prácticas/ejercicios)
@@ -465,8 +475,11 @@ footer {
     background-color: var(--fondoimagen);
     padding: 24px 32px;
     margin-top: 24px;
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: space-around;
     border-radius: 15px;
-    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.8);
 }
 
 /* Evita que el contenedor de navegación del pie de página ocupe el 100% 
